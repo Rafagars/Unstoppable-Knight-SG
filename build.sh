@@ -1,0 +1,1 @@
+make GDK=$HOME/SGDK -f $HOME/SGDK/makefile_wine.gen
