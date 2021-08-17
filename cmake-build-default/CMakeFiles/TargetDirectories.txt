@@ -1,0 +1,3 @@
+/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/CMakeFiles/rebuild_cache.dir
+/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/CMakeFiles/edit_cache.dir
+/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/CMakeFiles/Unstoppable_Knight_GB.dir

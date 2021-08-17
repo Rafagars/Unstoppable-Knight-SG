@@ -10,6 +10,10 @@ void killCharacter(Entity* en){
 }
 
 void reviveCharacter(Entity* en){
-    en->health = 1;
+    if(en->name == "KNIGHT"){
+        en->health = 3;
+    } else {
+        en->health = 1;
+    }
     SPR_setVisibility(en->sprite, VISIBLE);
 }

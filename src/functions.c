@@ -50,9 +50,9 @@ void myJoyHandler(u16 joy, u16 changed, u16 state){
     if(joy == JOY_1){
         if(game_on == TRUE){
             if(state & BUTTON_LEFT){
-                player.y -= 32;
+                player.x -= 32;
             } else if(state & BUTTON_RIGHT){
-                player.y += 32;
+                player.x += 32;
             }
             if(state & BUTTON_START){
                 pauseGame();

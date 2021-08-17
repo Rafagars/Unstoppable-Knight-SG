@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Project"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Unstoppable_Knight_GB">
+				<Option output="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Unstoppable_Knight_GB" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/SGDK/inc"/>
+					<Add directory="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/res"/>
+					<Add directory="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 Unstoppable_Knight_GB"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Unstoppable_Knight_GB/fast">
+				<Option output="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Unstoppable_Knight_GB" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/SGDK/inc"/>
+					<Add directory="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/res"/>
+					<Add directory="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 Unstoppable_Knight_GB/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/cmake-build-default/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc/characters.h">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc/entity.h">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc/functions.h">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc/scenes.h">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/inc/ui.h">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/main.c">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/res/resources.h">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/src/characters.c">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/src/entity.c">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/src/functions.c">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/src/scenes.c">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/src/ui.c">
+			<Option target="Unstoppable_Knight_GB"/>
+		</Unit>
+		<Unit filename="/home/rafagars/Documentos/Programming/C/SEGA_GENESIS/Unstoppable-Knight/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

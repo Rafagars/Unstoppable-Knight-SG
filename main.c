@@ -1,7 +1,6 @@
 #include <genesis.h>
 #include "functions.h"
 
-
 int main(){
     //Input
     JOY_init();
@@ -24,9 +23,15 @@ int main(){
 
     u8 offset = 0;
     while(1){
-        VDP_setVerticalScroll(BG_B, offset -= 1);
+        VDP_setVerticalScroll(BG_B, offset += 1);
         if(game_on){
-            
+            if(player.x < LEFT_EDGE){
+                player.x = LEFT_EDGE;
+            } else if(player.x > RIGHT_EDGE){
+                player.x = 208;
+            }
+            SPR_setPosition(player.sprite, player.x, player.y);
+            SPR_update();
         }
         SYS_doVBlankProcess();
     }

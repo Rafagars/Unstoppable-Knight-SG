@@ -22,4 +22,16 @@ void titleScreen(){
 
 void level(){
     onTitle = FALSE;
+    VDP_clearText(0, 23, 32);
+    VDP_setTextPlane(WINDOW);
+    VDP_setPalette(PAL2, ui.palette->data);
+    VDP_setTextPalette(PAL2);
+    VDP_clearPlane(BG_A, FALSE);
+    VDP_setWindowVPos(FALSE, 1);
+    //VDP_drawImageEx(WINDOW, &ui, TILE_ATTR_FULL(PAL2, 0, FALSE, FALSE, index), 0, 0, FALSE, DMA);
+    VDP_drawText(label_score, 5, 0);
+    VDP_drawText(str_score, 12, 0);
+    VDP_drawText(str_coins, 18, 0);
+    reviveCharacter(&player);
+    SPR_setAnim(player.sprite, ANIM_WALK);
 }

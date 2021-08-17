@@ -11,7 +11,7 @@
 #include "ui.h"
 
 #define LEFT_EDGE 80
-#define RIGHT_EDGE 240
+#define RIGHT_EDGE 224
 
 extern u8 i;
 extern u8 scrollspeed;

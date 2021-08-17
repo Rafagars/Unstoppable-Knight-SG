@@ -6,5 +6,6 @@ extern const SpriteDefinition orc;
 extern const SpriteDefinition pit;
 extern const Image title;
 extern const Image bg_B;
+extern const Image ui;
 
 #endif // _RES_RESOURCES_H_
