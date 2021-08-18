@@ -5,6 +5,7 @@ extern const SpriteDefinition knight;
 extern const SpriteDefinition orc;
 extern const SpriteDefinition pit;
 extern const SpriteDefinition arrow;
+extern const SpriteDefinition bomb;
 extern const SpriteDefinition heart;
 extern const SpriteDefinition coin;
 extern const SpriteDefinition coin_ui;

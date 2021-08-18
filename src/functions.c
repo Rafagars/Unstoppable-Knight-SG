@@ -70,10 +70,5 @@ void myJoyHandler(u16 joy, u16 changed, u16 state){
 }
 
 u16 randomize(u16 n){
-    u16 x;
-    
-    do{ x = random(); }
-    while(x >= n);
-
-    return x;
+    return random() % n;
 }

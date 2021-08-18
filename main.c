@@ -30,7 +30,10 @@ int main(){
             } else if(player.x > RIGHT_EDGE){
                 player.x = 208;
             }
+            updateHealthDisplay();
             SPR_setPosition(player.sprite, player.x, player.y);
+            moveCoins();
+            moveEnemies();
             SPR_update();
         }
         SYS_doVBlankProcess();

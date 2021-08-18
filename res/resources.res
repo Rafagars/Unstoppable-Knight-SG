@@ -5,6 +5,7 @@ SPRITE  knight  "sprite/knight.png"    4   4   NONE     8
 SPRITE  orc     "sprite/orc.png"       4   4   NONE     8
 SPRITE  pit     "sprite/pit.png"       4   4   NONE
 SPRITE  arrow   "sprite/arrow.png"     1   2   NONE
+SPRITE  bomb    "sprite/bomb.png"      2   2   NONE     8
 SPRITE  heart   "sprite/hearts.png"    3   1   NONE
 SPRITE  coin    "sprite/coins.png"     2   2   NONE     8
 SPRITE  coin_ui "sprite/coin.png"      1   1   NONE
