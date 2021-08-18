@@ -23,8 +23,9 @@ int main(){
 
     u8 offset = 0;
     while(1){
-        VDP_setVerticalScroll(BG_B, offset += 1);
+        if(onTitle)VDP_setVerticalScroll(BG_B, offset += 1);
         if(game_on){
+            VDP_setVerticalScroll(BG_B, offset += 1);
             if(player.x < LEFT_EDGE){
                 player.x = LEFT_EDGE;
             } else if(player.x > RIGHT_EDGE){

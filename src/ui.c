@@ -11,10 +11,16 @@ char str_coins[4] = "X00";
 void updateScoreDisplay(){
     sprintf(str_score, "%d", score);
     VDP_clearText(17, 0, 5);
-    VDP_drawText(str_score, 17, 0);
+    VDP_drawText(str_score, 16, 0);
 }
 
 void updateCoinsDisplay(){
+    if(coins_counter > 99){
+        coins_counter = 0;
+        if(player.health < 3){
+            player.health++;
+        }
+    }
     if(coins_counter < 10){
         sprintf(str_coins, "X0%d", coins_counter);
     } else {

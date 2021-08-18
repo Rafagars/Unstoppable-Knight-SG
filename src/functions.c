@@ -22,9 +22,9 @@ void startGame(){
     if(game_on == FALSE){
         game_on = TRUE;
         clearText();
-        VDP_drawText(label_score, 1, 0);
-        VDP_drawText(str_score, 1, 1);
-        VDP_drawText(str_coins, 35, 1);
+        VDP_drawText(label_score, 10, 0);
+        VDP_drawText(str_score, 16, 0);
+        VDP_drawText(str_coins, 22, 0);
         updateScoreDisplay();
         updateCoinsDisplay();
     }

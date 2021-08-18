@@ -17,10 +17,10 @@ typedef struct {
 } Entity;
 
 extern Entity player;
-extern Entity coins[8];
-extern Entity arrows[2];
-extern Entity orcs[2];
-extern Entity pits[2];
-extern Entity bombs[2];
+extern Entity coins[6];
+extern Entity arrows;
+extern Entity orcs;
+extern Entity pits;
+extern Entity bombs;
 
 #endif

@@ -18,9 +18,9 @@ void reviveCharacter(Entity* en){
 
 void setupCoins(){
     Entity* c = coins;
-    for(i = 0; i < 8; i++){
-        c->x = LEFT_EDGE + 32*randomize(6);
-        c->y = 255;
+    for(i = 0; i < 6; i++){
+        c->x = LEFT_EDGE + 32*randomize(5);
+        c->y = 224 + 16*i;
         c->w = 16;
         c->h = 16;
         c->health = 1;
@@ -29,100 +29,79 @@ void setupCoins(){
         c++;
     }
 }
-Entity* a = arrows;
+
 void setupArrows(u8 x){
-    a->x = LEFT_EDGE + x;
-    a->y = 255;
-    a->w = 8;
-    a->h = 16;
-    a->health = 1;
-    a->sprite = SPR_addSprite(&arrow, a->x, a->y, TILE_ATTR(PAL2, 0, FALSE, FALSE));
-    a++;
+    arrows.x = LEFT_EDGE + x;
+    arrows.y = 255;
+    arrows.w = 8;
+    arrows.h = 16;
+    arrows.health = 1;
+    arrows.sprite = SPR_addSprite(&arrow, arrows.x, arrows.y, TILE_ATTR(PAL2, 0, FALSE, FALSE));
 }
-Entity* o = orcs;
+
 void setupOrcs(u8 x){
-    o->x = LEFT_EDGE + x;
-    o->y = 255;
-    o->w = 32;
-    o->h = 32;
-    o->health = 1;
-    o->sprite = SPR_addSprite(&orc, o->x, o->y, TILE_ATTR(PAL1, 0, FALSE, FALSE));
-    o++;
+    orcs.x = LEFT_EDGE + x;
+    orcs.y = 255;
+    orcs.w = 32;
+    orcs.h = 32;
+    orcs.health = 1;
+    orcs.sprite = SPR_addSprite(&orc, orcs.x, orcs.y, TILE_ATTR(PAL1, 0, FALSE, FALSE));
 }
-Entity* p = pits;
+
 void setupPits(u8 x){
-    p->x = LEFT_EDGE + x;
-    p->y = 255;
-    p->w = 32;
-    p->h = 32;
-    p->health = 1;
-    p->sprite = SPR_addSprite(&pit, p->x, p->y, TILE_ATTR(PAL0, 0, FALSE, FALSE));
-    p++;
+    pits.x = LEFT_EDGE + x;
+    pits.y = 255;
+    pits.w = 32;
+    pits.h = 32;
+    pits.health = 1;
+    pits.sprite = SPR_addSprite(&pit, pits.x, pits.y, TILE_ATTR(PAL0, 0, FALSE, FALSE));
 }
-Entity* b = bombs;
+
 void setupBombs(u8 x){
-    b->x = LEFT_EDGE + x;
-    b->y = 255;
-    b->w = 16;
-    b->h = 16;
-    b->health = 1;
-    b->sprite = SPR_addSprite(&bomb, b->x, b->y, TILE_ATTR(PAL3, 0, FALSE, FALSE));
-    b++;
+    bombs.x = LEFT_EDGE + x;
+    bombs.y = 255;
+    bombs.w = 16;
+    bombs.h = 16;
+    bombs.health = 1;
+    bombs.sprite = SPR_addSprite(&bomb, bombs.x, bombs.y, TILE_ATTR(PAL3, 0, FALSE, FALSE));
 }
 
 void moveCoins(){
     Entity* c = coins;
-    for(i = 0; i < 8; i++){
+    for(i = 0; i < 6; i++){
         c->y -= 1;
         if(c->y < 4){
             c->x = LEFT_EDGE + 32*randomize(5);
             c->y = 255;
+            reviveCharacter(c);
         }
         if(checkCollision(c, &player)){
+            killCharacter(c);
+            c->y = 0;
             coins_counter++;
             score += 10;
             updateCoinsDisplay();
             updateScoreDisplay();
         }
+        SPR_setPosition(c->sprite, c->x, c->y);
         c++;
     }
 }
 
 void moveEnemies(){
-    Entity* a = arrows;
-    Entity* o = orcs;
-    Entity* p = pits;
-    Entity* b = bombs;
-    for(i = 0; i < MAX_ENEMIES; i++){
-        a->y -= 3;
-        o->y -= 2;
-        p->y -= 1;
-        b->y -= 1;
-        SPR_setPosition(a->sprite, a->x, a->y);
-        SPR_setPosition(o->sprite, o->x, o->y);
-        SPR_setPosition(p->sprite, p->x, p->y);
-        SPR_setPosition(b->sprite, b->x, b->y);
+    Entity* obs[4] = {&arrows, &orcs, &pits, &bombs};
 
-        if(a->y < 4){
-            a->x = LEFT_EDGE + 32*randomize(5);
-            a->y = 255;
+    arrows.y -= 3;
+    orcs.y -= 2;
+    pits.y -= 1;
+    bombs.y -= 1;
+
+    for(i = 0; i < 4; i++){
+        SPR_setPosition(obs[i]->sprite, obs[i]->x, obs[i]->y);
+        if(obs[i]->y < 4){
+            obs[i]->x = LEFT_EDGE + 32*randomize(5);
+            obs[i]->y = 255;
         }
-        if(o->y < 4){
-            o->x = LEFT_EDGE + 32*randomize(5);
-            o->y = 255;
-        }
-        if(p->y < 4){
-            p->x = LEFT_EDGE + 32*randomize(5);
-            p->y = 255;
-        }
-        if(b->y < 4){
-            b->x = LEFT_EDGE + 32*randomize(5);
-            b->y = 255;
-        }
-        a++;
-        o++;
-        p++;
-        b++;
     }
 
 }
