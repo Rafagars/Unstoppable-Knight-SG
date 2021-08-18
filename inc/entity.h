@@ -18,7 +18,7 @@ typedef struct {
 
 extern Entity player;
 extern Entity coins[5];
-extern Entity arrow;
+extern Entity arrows;
 extern Entity obstacles[2];
 extern Entity bombs;
 

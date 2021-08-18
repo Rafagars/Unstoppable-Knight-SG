@@ -29,9 +29,11 @@ void level(){
     VDP_clearPlane(BG_A, FALSE);
     VDP_setWindowVPos(FALSE, 1);
     //VDP_drawImageEx(WINDOW, &ui, TILE_ATTR_FULL(PAL2, 0, FALSE, FALSE, index), 0, 0, FALSE, DMA);
-    VDP_drawText(label_score, 5, 0);
-    VDP_drawText(str_score, 12, 0);
-    VDP_drawText(str_coins, 18, 0);
+    VDP_drawText(label_score, 10, 0);
+    VDP_drawText(str_score, 17, 0);
+    VDP_drawText(str_coins, 22, 0);
     reviveCharacter(&player);
     SPR_setAnim(player.sprite, ANIM_WALK);
+    coin_counter_sprite = SPR_addSprite(&coin_ui, 160, 0, TILE_ATTR(PAL2, 1, FALSE, FALSE));
+    heart_ui = SPR_addSprite(&heart, 216, 0,TILE_ATTR(PAL2, 1, FALSE, FALSE));
 }

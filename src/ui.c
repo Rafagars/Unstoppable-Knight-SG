@@ -1,5 +1,7 @@
 #include "ui.h"
 
+Sprite* coin_counter_sprite;
+Sprite* heart_ui;
 u16 score = 0;
 char label_score[6] = "SCORE\0";
 char str_score[6] = "0";
