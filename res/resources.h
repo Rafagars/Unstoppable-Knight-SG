@@ -9,6 +9,7 @@ extern const SpriteDefinition bomb;
 extern const SpriteDefinition heart;
 extern const SpriteDefinition coin;
 extern const SpriteDefinition coin_ui;
+extern const SpriteDefinition shieldS;
 extern const Image title;
 extern const Image bg_B;
 extern const Image ui;

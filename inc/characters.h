@@ -6,6 +6,13 @@
 #define ANIM_WALK 0
 #define MAX_ENEMIES 2
 
+extern u8 i;
+extern bool hit;
+extern bool shield;
+extern u8 hitTimer;
+extern u8 shieldTimer;
+extern Sprite* shield_sprite;
+
 extern bool checkCollision(Entity* one, Entity* two);
 extern void handleCollision(Entity* en);
 extern void killCharacter(Entity* en);

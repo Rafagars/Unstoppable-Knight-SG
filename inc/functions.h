@@ -16,6 +16,7 @@
 extern u8 i;
 extern u8 scrollspeed;
 extern bool onTitle;
+extern bool gameOver;
 
 extern const char msg_start[22];
 extern const char msg_reset[22];

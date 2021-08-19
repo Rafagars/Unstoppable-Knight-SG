@@ -9,3 +9,4 @@ SPRITE  bomb    "sprite/bomb.png"      2   2   NONE     8
 SPRITE  heart   "sprite/hearts.png"    3   1   NONE
 SPRITE  coin    "sprite/coins.png"     2   2   NONE     8
 SPRITE  coin_ui "sprite/coin.png"      1   1   NONE
+SPRITE  shieldS "sprite/shield.png"    2   2   NONE

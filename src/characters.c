@@ -1,6 +1,11 @@
 #include "characters.h"
 
 u8 i;
+bool hit = FALSE;
+bool shield = FALSE;
+u8 hitTimer = 5;
+u8 shieldTimer = 5;
+Sprite* shield_sprite;
 
 bool checkCollision(Entity* one, Entity* two){
     return((one->x >= two->x && one->x <= two->x + two->w) && (one->y >= two->y && one->y <= two->y + two->h)) || ((two->x >= one->x && two->x <= one->x + one->w) && (two->y >= one->y && two->y <= one->y + one->h));
@@ -13,12 +18,14 @@ void killCharacter(Entity* en){
 
 void reviveCharacter(Entity* en){
     en->health = 1;
+    en->x = LEFT_EDGE + 32*randomize(5);
+    en->y = 255;
     SPR_setVisibility(en->sprite, VISIBLE);
 }
 
 void setupCoins(){
     Entity* c = coins;
-    for(i = 0; i < 6; i++){
+    for(i = 0; i < 5; i++){
         c->x = LEFT_EDGE + 32*randomize(5);
         c->y = 224 + 16*i;
         c->w = 16;
@@ -68,7 +75,7 @@ void setupBombs(u8 x){
 
 void moveCoins(){
     Entity* c = coins;
-    for(i = 0; i < 6; i++){
+    for(i = 0; i < 5; i++){
         c->y -= 1;
         if(c->y < 4){
             c->x = LEFT_EDGE + 32*randomize(5);
@@ -96,11 +103,35 @@ void moveEnemies(){
     pits.y -= 1;
     bombs.y -= 1;
 
+    if(checkCollision(&arrows, &player) && !hit){
+        killCharacter(&arrows);
+        arrows.y = 0;
+        if(!shield){
+            hit = TRUE;
+            player.health--;
+        }
+    }
+
+    if(checkCollision(&bombs, &player) && !hit){
+        killCharacter(&bombs);
+        bombs.y = 0;
+        if(!shield){
+            hit = TRUE;
+            player.health--;
+        }
+    }
+
+    if((checkCollision(&orcs, &player) || checkCollision(&pits, &player)) && !hit){
+        hit = TRUE;
+        player.health--;
+    }
+
     for(i = 0; i < 4; i++){
         SPR_setPosition(obs[i]->sprite, obs[i]->x, obs[i]->y);
         if(obs[i]->y < 4){
             obs[i]->x = LEFT_EDGE + 32*randomize(5);
             obs[i]->y = 255;
+            reviveCharacter(obs[i]);
         }
     }
 

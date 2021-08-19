@@ -42,7 +42,7 @@ void updateHealthDisplay(){
             SPR_setAnim(heart_ui, 2);
             break;
         case 0:
-            SPR_setAnim(heart_ui, 3);
+            //SPR_setAnim(heart_ui, 3);
             endGame();
             break;
     }

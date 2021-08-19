@@ -3,6 +3,7 @@
 u8 i;
 const int scrollsped = 2;
 bool onTitle;
+bool gameOver = FALSE;
 
 //Screen messages for the player
 const char msg_start[22] = "Press START to begin";
@@ -42,8 +43,10 @@ void endGame(){
     if(game_on == TRUE){
         showText(msg_reset);
         game_on = FALSE;
+        gameOver = TRUE;
     }
     score = 0;
+    coins_counter = 0;
 }
 
 void myJoyHandler(u16 joy, u16 changed, u16 state){
@@ -54,15 +57,19 @@ void myJoyHandler(u16 joy, u16 changed, u16 state){
             } else if(state & BUTTON_RIGHT){
                 player.x += 32;
             }
+            if(state & BUTTON_B){
+                shield = TRUE;
+                //SPR_setVisibility(shield_sprite, VISIBLE);
+            }
             if(state & BUTTON_START){
                 pauseGame();
             }
         } else {
             if(state & BUTTON_START){
                 startGame();
-                if(onTitle){
+                if(onTitle || gameOver){
                     VDP_clearText(0, 23, 32);
-                    level();   
+                    level();
                 }
             }
         }

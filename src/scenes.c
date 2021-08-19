@@ -27,21 +27,17 @@ void level(){
     VDP_setPalette(PAL2, ui.palette->data);
     VDP_setPalette(PAL3, bomb.palette->data);
     VDP_setTextPalette(PAL2);
-    VDP_clearPlane(BG_A, FALSE);
+    VDP_clearTextAreaBG(BG_A, 0, 1, 40, 32);
     VDP_setWindowVPos(FALSE, 1);
     VDP_drawText(label_score, 10, 0);
     VDP_drawText(str_score, 16, 0);
     VDP_drawText(str_coins, 22, 0);
-    reviveCharacter(&player);
     player.health = 3;
     SPR_setAnim(player.sprite, ANIM_WALK);
     coin_counter_sprite = SPR_addSprite(&coin_ui, 160, 0, TILE_ATTR(PAL2, 1, FALSE, FALSE));
     heart_ui = SPR_addSprite(&heart, 216, 0,TILE_ATTR(PAL2, 1, FALSE, FALSE));
-    setupCoins();
-
-    setupArrows(32*randomize(5));
-    setupOrcs(32*randomize(5));
-    setupPits(32*randomize(5));
-    setupBombs(32*randomize(5));
-
+    reviveCharacter(&arrows);
+    reviveCharacter(&orcs);
+    reviveCharacter(&pits);
+    reviveCharacter(&bombs);
 }
