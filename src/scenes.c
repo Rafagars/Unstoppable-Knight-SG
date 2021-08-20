@@ -21,10 +21,10 @@ void titleScreen(){
 void level(){
     onTitle = FALSE;
     VDP_clearText(0, 23, 32);
-    VDP_setTextPlane(WINDOW);
+    //VDP_setTextPlane(WINDOW);
     VDP_setTextPalette(PAL2);
     VDP_clearTextAreaBG(BG_A, 0, 1, 40, 32);
-    VDP_setWindowVPos(FALSE, 1);
+    //VDP_setWindowVPos(FALSE, 1);
     VDP_drawText(label_score, 10, 0);
     VDP_drawText(str_score, 16, 0);
     VDP_drawText(str_coins, 22, 0);

@@ -8,7 +8,7 @@ bool gameOver = FALSE;
 //Screen messages for the player
 const char msg_start[22] = "Press START to begin";
 const char msg_reset[22] = "GAME OVER\tPress START";
-const char msg_pause[6] = "PAUSED";
+const char msg_pause[7] = "PAUSED";
 bool game_on = FALSE;
 
 void showText(char s[]){
@@ -22,7 +22,6 @@ void clearText(){
 void startGame(){
     if(game_on == FALSE){
         game_on = TRUE;
-        gameOver = FALSE;
         clearText();
         VDP_drawText(label_score, 10, 0);
         VDP_drawText(str_score, 16, 0);
@@ -72,6 +71,7 @@ void myJoyHandler(u16 joy, u16 changed, u16 state){
                 startGame();
                 if(onTitle || gameOver){
                     VDP_clearText(0, 23, 32);
+                    gameOver = FALSE;
                     level();
                 }
             }

@@ -4,6 +4,7 @@
 #include "functions.h"
 
 #define ANIM_WALK 0
+#define ANIM_HIT 1
 #define MAX_ENEMIES 2
 
 extern u8 i;
@@ -14,7 +15,7 @@ extern u8 shieldTimer;
 extern Sprite* shield_sprite;
 
 extern bool checkCollision(Entity* one, Entity* two);
-extern void handleCollision(Entity* en);
+extern bool checkPlayerCollision(Entity* character);
 extern void killCharacter(Entity* en);
 extern void reviveCharacter(Entity* en);
 extern void setupCoins();

@@ -3,12 +3,17 @@
 u8 i;
 bool hit = FALSE;
 bool shield = FALSE;
-u8 hitTimer = 5;
-u8 shieldTimer = 5;
+u8 hitTimer = 30;
+u8 shieldTimer = 15;
 Sprite* shield_sprite;
 
 bool checkCollision(Entity* one, Entity* two){
     return((one->x >= two->x && one->x <= two->x + two->w) && (one->y >= two->y && one->y <= two->y + two->h)) || ((two->x >= one->x && two->x <= one->x + one->w) && (two->y >= one->y && two->y <= one->y + one->h));
+}
+
+// Gives the player a smaller hitbox
+bool checkPlayerCollision(Entity* character){
+    return((player.x  + 4 >= character->x && player.x + 4 <= character->x + character->w) && (player.y + 4 >= character->y && player.y + 4 <= character->y + character->h)) || ((character->x >= player.x + 4 && character->x <= player.x + player.w - 4) && (character->y >= player.y + 4 && character->y <= player.y + player.h - 4));
 }
 
 void killCharacter(Entity* en){
@@ -23,7 +28,7 @@ void reviveCharacter(Entity* en){
     } else {
         en->x = LEFT_EDGE + 32*randomize(5);
     }
-    en->y = 255;
+    en->y = 254;
     SPR_setVisibility(en->sprite, VISIBLE);
 }
 
@@ -105,26 +110,29 @@ void moveEnemies(){
     pits.y -= 1;
     bombs.y -= 1;
 
-    if(checkCollision(&arrows, &player) && !hit){
+    if(checkPlayerCollision(&arrows) && !hit){
         killCharacter(&arrows);
         arrows.y = 0;
         if(!shield){
             hit = TRUE;
+            SPR_setAnim(player.sprite, ANIM_HIT);
             player.health--;
         }
     }
 
-    if(checkCollision(&bombs, &player) && !hit){
+    if(checkPlayerCollision(&bombs) && !hit){
         killCharacter(&bombs);
         bombs.y = 0;
         if(!shield){
             hit = TRUE;
+            SPR_setAnim(player.sprite, ANIM_HIT);
             player.health--;
         }
     }
 
-    if((checkCollision(&orcs, &player) || checkCollision(&pits, &player)) && !hit){
+    if((checkPlayerCollision(&orcs) || checkPlayerCollision(&pits)) && !hit){
         hit = TRUE;
+        SPR_setAnim(player.sprite, ANIM_HIT);
         player.health--;
     }
 

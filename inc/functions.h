@@ -20,7 +20,7 @@ extern bool gameOver;
 
 extern const char msg_start[22];
 extern const char msg_reset[22];
-extern const char msg_pause[6];
+extern const char msg_pause[7];
 extern bool game_on;
 
 extern void showText(char s[]);

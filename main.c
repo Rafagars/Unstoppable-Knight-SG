@@ -48,10 +48,15 @@ int main(){
                 shieldTimer--;
             }
             updateHealthDisplay();
-            if(hitTimer < 1) hit = FALSE;
+            if(hitTimer < 1)  {
+                hit = FALSE;
+                SPR_setAnim(player.sprite, ANIM_WALK);
+                hitTimer = 30;
+            }
             if(shieldTimer < 1){
                 shield = FALSE;
                 SPR_setVisibility(shield_sprite, HIDDEN);
+                shieldTimer = 15;
             }
             SPR_setPosition(player.sprite, player.x, player.y);
             SPR_setPosition(shield_sprite, player.x, player.y + 16);
