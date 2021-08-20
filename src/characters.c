@@ -18,7 +18,11 @@ void killCharacter(Entity* en){
 
 void reviveCharacter(Entity* en){
     en->health = 1;
-    en->x = LEFT_EDGE + 32*randomize(5);
+    if(en->w < 32){
+        en->x = LEFT_EDGE + 8 + 32*randomize(5);
+    } else {
+        en->x = LEFT_EDGE + 32*randomize(5);
+    }
     en->y = 255;
     SPR_setVisibility(en->sprite, VISIBLE);
 }
@@ -38,7 +42,7 @@ void setupCoins(){
 }
 
 void setupArrows(u8 x){
-    arrows.x = LEFT_EDGE + x;
+    arrows.x = LEFT_EDGE + x + 8;
     arrows.y = 255;
     arrows.w = 8;
     arrows.h = 16;
@@ -65,7 +69,7 @@ void setupPits(u8 x){
 }
 
 void setupBombs(u8 x){
-    bombs.x = LEFT_EDGE + x;
+    bombs.x = LEFT_EDGE + x + 8;
     bombs.y = 255;
     bombs.w = 16;
     bombs.h = 16;
@@ -78,8 +82,6 @@ void moveCoins(){
     for(i = 0; i < 5; i++){
         c->y -= 1;
         if(c->y < 4){
-            c->x = LEFT_EDGE + 32*randomize(5);
-            c->y = 255;
             reviveCharacter(c);
         }
         if(checkCollision(c, &player)){
@@ -129,8 +131,6 @@ void moveEnemies(){
     for(i = 0; i < 4; i++){
         SPR_setPosition(obs[i]->sprite, obs[i]->x, obs[i]->y);
         if(obs[i]->y < 4){
-            obs[i]->x = LEFT_EDGE + 32*randomize(5);
-            obs[i]->y = 255;
             reviveCharacter(obs[i]);
         }
     }

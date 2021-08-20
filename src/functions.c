@@ -22,6 +22,7 @@ void clearText(){
 void startGame(){
     if(game_on == FALSE){
         game_on = TRUE;
+        gameOver = FALSE;
         clearText();
         VDP_drawText(label_score, 10, 0);
         VDP_drawText(str_score, 16, 0);
@@ -42,6 +43,8 @@ void pauseGame(){
 void endGame(){
     if(game_on == TRUE){
         showText(msg_reset);
+        shield = FALSE;
+        hit = FALSE;
         game_on = FALSE;
         gameOver = TRUE;
     }
@@ -59,7 +62,7 @@ void myJoyHandler(u16 joy, u16 changed, u16 state){
             }
             if(state & BUTTON_B){
                 shield = TRUE;
-                //SPR_setVisibility(shield_sprite, VISIBLE);
+                SPR_setVisibility(shield_sprite, VISIBLE);
             }
             if(state & BUTTON_START){
                 pauseGame();

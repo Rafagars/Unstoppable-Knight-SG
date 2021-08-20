@@ -7,8 +7,6 @@ void titleScreen(){
     index += TILE_USERINDEX;
     VDP_setTextPlane(BG_A);
     VDP_setTextPalette(PAL0);
-    VDP_setPalette(PAL0, title.palette->data);
-    VDP_setPalette(PAL1, bg_B.palette->data);
     VDP_drawImageEx(BG_A, &title, TILE_ATTR_FULL(PAL0, 1, FALSE, FALSE, index),0, 0, FALSE, DMA);
 
     index += title.tileset->numTile;
@@ -24,8 +22,6 @@ void level(){
     onTitle = FALSE;
     VDP_clearText(0, 23, 32);
     VDP_setTextPlane(WINDOW);
-    VDP_setPalette(PAL2, ui.palette->data);
-    VDP_setPalette(PAL3, bomb.palette->data);
     VDP_setTextPalette(PAL2);
     VDP_clearTextAreaBG(BG_A, 0, 1, 40, 32);
     VDP_setWindowVPos(FALSE, 1);
