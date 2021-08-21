@@ -13,6 +13,10 @@
 #define LEFT_EDGE 80
 #define RIGHT_EDGE 224
 
+#define SFX_PICK_UP 64
+#define SFX_HIT 65
+#define SFX_EXPLOSION 66
+
 extern u8 i;
 extern u8 scrollspeed;
 extern bool onTitle;

@@ -3,9 +3,16 @@
 u8 i;
 bool hit = FALSE;
 bool shield = FALSE;
-u8 hitTimer = 30;
-u8 shieldTimer = 15;
+u8 hitTimer = 45;
+u8 shieldTimer = 45;
 Sprite* shield_sprite;
+
+void playerHit(){
+    hit = TRUE;
+    XGM_startPlayPCM(SFX_HIT, 1, SOUND_PCM_CH2);
+    SPR_setAnim(player.sprite, ANIM_HIT);
+    player.health--;
+}
 
 bool checkCollision(Entity* one, Entity* two){
     return((one->x >= two->x && one->x <= two->x + two->w) && (one->y >= two->y && one->y <= two->y + two->h)) || ((two->x >= one->x && two->x <= one->x + one->w) && (two->y >= one->y && two->y <= one->y + one->h));
@@ -16,6 +23,15 @@ bool checkPlayerCollision(Entity* character){
     return((player.x  + 4 >= character->x && player.x + 4 <= character->x + character->w) && (player.y + 4 >= character->y && player.y + 4 <= character->y + character->h)) || ((character->x >= player.x + 4 && character->x <= player.x + player.w - 4) && (character->y >= player.y + 4 && character->y <= player.y + player.h - 4));
 }
 
+void checkObstacles(Entity* one, Entity* two){
+    if(one->x == two->x && one->y - two->y < 32){
+        if(one->x >= LEFT_EDGE && one->x < RIGHT_EDGE - 64){
+            two->x = one->x + 32;
+        } else {
+            two->x = one->x - 32;
+        }
+    }
+}
 void killCharacter(Entity* en){
     en->health = 0;
     SPR_setVisibility(en->sprite, HIDDEN);
@@ -23,6 +39,7 @@ void killCharacter(Entity* en){
 
 void reviveCharacter(Entity* en){
     en->health = 1;
+    if(en == &bombs) SPR_setAnim(bombs.sprite, 0); //Default animation
     if(en->w < 32){
         en->x = LEFT_EDGE + 8 + 32*randomize(5);
     } else {
@@ -32,19 +49,31 @@ void reviveCharacter(Entity* en){
     SPR_setVisibility(en->sprite, VISIBLE);
 }
 
+void initCoins(){
+    Entity* c = coins;
+    for(i = 0; i < 5; i++){
+        c->x = 0;
+        c->y = 0;
+        c->w = 16;
+        c->h = 16;
+        c->health = 1;
+        c->sprite = SPR_addSprite(&coin, c->x, c->y, TILE_ATTR(PAL2, 1, FALSE, FALSE));
+        SPR_setVisibility(c->sprite, HIDDEN);
+        SPR_setAnim(c->sprite, 0);
+        c++;
+    }
+}
+
 void setupCoins(){
     Entity* c = coins;
     for(i = 0; i < 5; i++){
         c->x = LEFT_EDGE + 32*randomize(5);
         c->y = 224 + 16*i;
-        c->w = 16;
-        c->h = 16;
-        c->health = 1;
-        c->sprite = SPR_addSprite(&coin, c->x, c->y, TILE_ATTR(PAL2, 1, FALSE, FALSE));
-        SPR_setAnim(c->sprite, 0);
+        SPR_setVisibility(c->sprite, VISIBLE);
         c++;
     }
 }
+
 
 void setupArrows(u8 x){
     arrows.x = LEFT_EDGE + x + 8;
@@ -90,6 +119,7 @@ void moveCoins(){
             reviveCharacter(c);
         }
         if(checkCollision(c, &player)){
+            XGM_startPlayPCM(SFX_PICK_UP, 1, SOUND_PCM_CH2);
             killCharacter(c);
             c->y = 0;
             coins_counter++;
@@ -110,30 +140,26 @@ void moveEnemies(){
     pits.y -= 1;
     bombs.y -= 1;
 
+    checkObstacles(&pits, &orcs);
+
     if(checkPlayerCollision(&arrows) && !hit){
         killCharacter(&arrows);
-        arrows.y = 0;
         if(!shield){
-            hit = TRUE;
-            SPR_setAnim(player.sprite, ANIM_HIT);
-            player.health--;
+            playerHit();
         }
+        arrows.y = 0;
     }
 
     if(checkPlayerCollision(&bombs) && !hit){
-        killCharacter(&bombs);
-        bombs.y = 0;
+        XGM_startPlayPCM(SFX_EXPLOSION, 1, SOUND_PCM_CH2);
+        SPR_setAnim(bombs.sprite, 1); //Explosion Animation
         if(!shield){
-            hit = TRUE;
-            SPR_setAnim(player.sprite, ANIM_HIT);
-            player.health--;
+            playerHit();
         }
     }
 
     if((checkPlayerCollision(&orcs) || checkPlayerCollision(&pits)) && !hit){
-        hit = TRUE;
-        SPR_setAnim(player.sprite, ANIM_HIT);
-        player.health--;
+        playerHit();
     }
 
     for(i = 0; i < 4; i++){

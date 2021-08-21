@@ -46,6 +46,10 @@ void endGame(){
         hit = FALSE;
         game_on = FALSE;
         gameOver = TRUE;
+        reviveCharacter(&arrows);
+        reviveCharacter(&orcs);
+        reviveCharacter(&pits);
+        reviveCharacter(&bombs);
     }
     score = 0;
     coins_counter = 0;

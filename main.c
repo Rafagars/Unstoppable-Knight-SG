@@ -12,6 +12,11 @@ int main(){
     VDP_setPalette(PAL2, ui.palette->data);
     VDP_setPalette(PAL3, bomb.palette->data);
 
+    // Initialize SFX
+    XGM_setPCM(SFX_PICK_UP, pick_up_sfx, sizeof(pick_up_sfx));
+    XGM_setPCM(SFX_HIT, hit_sfx, sizeof (hit_sfx));
+    XGM_setPCM(SFX_EXPLOSION, exp_sfx, sizeof(exp_sfx));
+
     // Disable interrupts
     SYS_disableInts();
 
@@ -23,7 +28,7 @@ int main(){
     shield_sprite = SPR_addSprite(&shieldS, player.x, player.y + 16, TILE_ATTR(PAL0, 0, FALSE, FALSE));
     player.sprite = SPR_addSprite(&knight, player.x, player.y, TILE_ATTR(PAL0, 1, FALSE, FALSE));
     SPR_setVisibility(shield_sprite, HIDDEN);
-    setupCoins();
+    initCoins();
 
     setupArrows(32*randomize(5));
     setupOrcs(32*randomize(5));
@@ -51,12 +56,12 @@ int main(){
             if(hitTimer < 1)  {
                 hit = FALSE;
                 SPR_setAnim(player.sprite, ANIM_WALK);
-                hitTimer = 30;
+                hitTimer = 45;
             }
             if(shieldTimer < 1){
                 shield = FALSE;
                 SPR_setVisibility(shield_sprite, HIDDEN);
-                shieldTimer = 15;
+                shieldTimer = 45;
             }
             SPR_setPosition(player.sprite, player.x, player.y);
             SPR_setPosition(shield_sprite, player.x, player.y + 16);

@@ -14,10 +14,13 @@ extern u8 hitTimer;
 extern u8 shieldTimer;
 extern Sprite* shield_sprite;
 
+extern void playerHit();
 extern bool checkCollision(Entity* one, Entity* two);
 extern bool checkPlayerCollision(Entity* character);
+extern void checkObstacles(Entity* one, Entity* two);
 extern void killCharacter(Entity* en);
 extern void reviveCharacter(Entity* en);
+extern void initCoins();
 extern void setupCoins();
 extern void setupArrows(u8 x);
 extern void setupOrcs(u8 x);
